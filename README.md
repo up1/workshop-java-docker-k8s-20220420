@@ -19,3 +19,9 @@ $docker image build -t java-api:3.0 -f Dockerfile_03  .  --progress plain
 $docker container run -d -p 9999:8080 java-api:3.0
 ```
 
+### Solution 4 :: Working with Layered Jars
+```
+$docker image build -t java-api:4.0 -f Dockerfile_04  .  --progress plain
+$docker container run -d -p 9999:8080 java-api:4.0
+```
+

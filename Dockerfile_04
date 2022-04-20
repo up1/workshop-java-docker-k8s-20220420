@@ -1,0 +1,12 @@
+FROM openjdk:11.0.14.1-jre-slim-bullseye as step1
+WORKDIR /build/dependency
+COPY target/*.jar ./app.jar
+RUN java -Djarmode=layertools -jar app.jar extract
+
+FROM openjdk:11.0.14.1-jre-slim-bullseye
+ARG DEPENDENCY=build/dependency
+COPY --from=step1 ${DEPENDENCY}/dependencies/ ./
+COPY --from=step1 ${DEPENDENCY}/spring-boot-loader ./
+COPY --from=step1 ${DEPENDENCY}/snapshot-dependencies/ ./
+COPY --from=step1 ${DEPENDENCY}/application/ ./
+CMD ["java", "org.springframework.boot.loader.JarLauncher"]
