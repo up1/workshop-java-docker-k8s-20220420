@@ -1,8 +1,8 @@
 ## Working with Dockerfile
 
 
-### Solution 1
+### Solution
 ```
-$docker image build -t java-api:1.0 .
+$docker image build -t java-api:1.0 .  --progress plain
 $docker container run -d -p 9999:8080 java-api:1.0
 ```
