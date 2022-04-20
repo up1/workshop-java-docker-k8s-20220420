@@ -1,0 +1,12 @@
+FROM maven:3.8.5-jdk-11-slim as step1
+WORKDIR /build
+COPY pom.xml .
+RUN mvn dependency:resolve
+COPY src /build/src
+RUN mvn package
+
+FROM openjdk:11.0.14.1-jre-slim-bullseye
+WORKDIR /deploy
+COPY --from=step1 /build/target/*.jar ./app.jar
+EXPOSE 8080
+CMD ["java", "-jar", "app.jar"]
