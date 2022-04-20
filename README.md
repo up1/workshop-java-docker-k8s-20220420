@@ -1,8 +1,21 @@
 ## Working with Dockerfile
 
 
-### Solution
+### Solution 1 :: Copy JAR file to Docker
 ```
 $docker image build -t java-api:1.0 .  --progress plain
 $docker container run -d -p 9999:8080 java-api:1.0
 ```
+
+### Solution 2 :: Multi-stage build
+```
+$docker image build -t java-api:2.0 -f Dockerfile_02  .  --progress plain
+$docker container run -d -p 9999:8080 java-api:2.0
+```
+
+### Solution 3 :: Multi-stage build + Improvement with cached system
+```
+$docker image build -t java-api:3.0 -f Dockerfile_03  .  --progress plain
+$docker container run -d -p 9999:8080 java-api:3.0
+```
+
