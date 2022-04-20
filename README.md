@@ -25,3 +25,9 @@ $docker image build -t java-api:4.0 -f Dockerfile_04  .  --progress plain
 $docker container run -d -p 9999:8080 java-api:4.0
 ```
 
+### Solution 5 :: Working with Buildpacks
+```
+$./mvnw spring-boot:build-image
+```
+
+
