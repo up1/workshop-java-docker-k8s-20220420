@@ -1,0 +1,11 @@
+FROM openjdk:11.0.14.1-jdk-slim-bullseye as step1
+WORKDIR /build/dependency
+COPY target/*.jar ./app.jar
+RUN jar -xf app.jar
+
+FROM openjdk:11.0.14.1-jre-slim-bullseye
+ARG DEPENDENCY=build/dependency
+COPY --from=step1 ${DEPENDENCY}/BOOT-INF/classes /app
+COPY --from=step1 ${DEPENDENCY}/BOOT-INF/lib /app/lib
+COPY --from=step1 ${DEPENDENCY}/META-INF /app/META-INF
+CMD ["java", "-cp", "/app:/app/lib/*", "com.example.demo.DemoApplication"]
