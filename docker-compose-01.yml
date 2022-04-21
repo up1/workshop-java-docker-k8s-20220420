@@ -1,0 +1,12 @@
+version: "3"
+services:
+  solution_1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: solution:1.0
+  solution_6:
+    build:
+      context: .
+      dockerfile: Dockerfile_06
+    image: solution:6.0
