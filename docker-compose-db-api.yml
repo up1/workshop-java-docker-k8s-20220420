@@ -1,0 +1,20 @@
+version: "3"
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "9999:8080"
+  db:
+    image: mysql:8
+    container_name: db
+    environment:
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+      - MYSQL_DATABASE=hello
+      - MYSQL_USER=somkiat
+      - MYSQL_PASSWORD=pass
+    volumes:
+      - ./data/tables.sql:/docker-entrypoint-initdb.d/1.sql
+    
+  
