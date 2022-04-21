@@ -31,3 +31,20 @@ $./mvnw spring-boot:build-image
 ```
 
 
+## Working with Docker compose
+```
+# Create JAR file without testing
+$./mvnw clean package -DskipTests=true
+
+# Start DB
+$docker-compose -f docker-compose-db-api.yml up -d db
+$docker-compose -f docker-compose-db-api.yml ps
+$docker-compose -f docker-compose-db-api.yml logs --follow
+
+# Start API
+$docker-compose -f docker-compose-db-api.yml up -d api
+$docker-compose -f docker-compose-db-api.yml ps
+$docker-compose -f docker-compose-db-api.yml logs --follow
+```
+
+

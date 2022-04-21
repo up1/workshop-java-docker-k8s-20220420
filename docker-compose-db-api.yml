@@ -8,7 +8,6 @@ services:
       - "9999:8080"
   db:
     image: mysql:8
-    container_name: db
     environment:
       - MYSQL_RANDOM_ROOT_PASSWORD=yes
       - MYSQL_DATABASE=hello
