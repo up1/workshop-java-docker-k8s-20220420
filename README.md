@@ -32,6 +32,9 @@ $./mvnw spring-boot:build-image
 
 
 ## Working with Docker compose
+* Spring boot + Spring Data JPA
+* MySQL database
+
 ```
 # Create JAR file without testing
 $./mvnw clean package -DskipTests=true
