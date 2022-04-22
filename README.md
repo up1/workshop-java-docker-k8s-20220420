@@ -40,7 +40,7 @@ $./mvnw spring-boot:build-image
 $./mvnw clean package -DskipTests=true
 
 # Create image
-$$docker-compose -f docker-compose-db-api.yml build
+$docker-compose -f docker-compose-db-api.yml build
 
 # Start DB
 $docker-compose -f docker-compose-db-api.yml up -d db
