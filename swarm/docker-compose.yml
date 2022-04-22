@@ -1,0 +1,10 @@
+version: "3"
+services:
+  api:
+    image: somkiat/demo_api:1.0
+    ports:
+      - "9999:8080"
+    deploy:
+      mode: replicated
+      replicas: 5
+
