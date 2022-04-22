@@ -6,6 +6,9 @@ services:
       dockerfile: Dockerfile
     ports:
       - "9999:8080"
+    depends_on:
+      - "db"
+    command: [ "./wait-for-it.sh", "db:3306", "--", "java", "-jar", "app.jar" ]
   db:
     image: mysql:8
     environment:
